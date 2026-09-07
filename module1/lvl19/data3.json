@@ -1,0 +1,13 @@
+{
+    "username": "bob",
+    "password": "",
+    "email": "",
+    "address": {
+        "city": "Київ",
+        "street": "Хрещатик",
+        "zip": "10000"
+    },
+    "is_adult": true,
+    "10": 2,
+    "true": false
+}

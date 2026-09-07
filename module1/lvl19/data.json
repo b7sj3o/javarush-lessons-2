@@ -1,0 +1,12 @@
+{
+  "name": "Alice",
+  "age": 25,
+  "city": "London",
+  "isStudent": true,
+  "courses": ["Python", "JavaScript"],
+  "address": {
+    "street": "Oxford Street",
+    "zipCode": "W1A 1AA"
+  },
+  "lastLogin": "2023-04-20T10:35:00Z"
+}

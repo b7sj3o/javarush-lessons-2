@@ -1,0 +1,6 @@
+.env
+.venv/
+**/*.md
+!README.md
+# git filter-repo
+.idea/

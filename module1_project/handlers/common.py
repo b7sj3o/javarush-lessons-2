@@ -1,0 +1,50 @@
+import logging
+from aiogram import Router, F
+from aiogram.filters import CommandStart, Command
+from aiogram.fsm.context import FSMContext
+from aiogram.types import FSInputFile, Message, CallbackQuery
+
+import keyboards.reply as reply_kb
+import keyboards.inline as inline_kb
+from utils import image_path, load_message
+
+
+router = Router()
+logger = logging.Logger(__name__)
+
+
+async def show_main_menu(message: Message, state: FSMContext) -> None:
+    """Скидає будь-який активний сценарій і показує головне меню."""
+    await state.clear()
+    await message.answer_photo(
+        photo=FSInputFile(image_path("main")),
+        caption=load_message("main"),
+        reply_markup=reply_kb.main_menu_kb,
+    )
+
+
+@router.message(CommandStart())
+async def handle_start(message: Message, state: FSMContext):
+    logging.info(f"Користувач {message.from_user.id} натиснув /start")
+
+    await show_main_menu(message, state)
+
+
+@router.message(Command(commands=["help"]))
+async def handle_start(message: Message):
+    await message.answer(
+        "Доступні команди:\n"
+        "/start - Розпочати\n"
+        "/help - Ця команда\n"
+        "/random - Випадковий факт\n"
+        "/gpt - Чат-бот"
+    )
+
+
+@router.callback_query(F.data == inline_kb.CB_FINISH)
+async def handle_finish(callback: CallbackQuery, state: FSMContext) -> None:
+    """Кнопка «Закінчити» — за ТЗ працює так само, як /start."""
+    await callback.answer()
+    await callback.message.edit_reply_markup(reply_markup=None)
+    await show_main_menu(callback.message, state)
+

@@ -19,6 +19,8 @@ async def set_commands(bot: Bot) -> None:
         BotCommand(command="help", description="Допомога"),
         BotCommand(command="random", description="Випадковий факт"),
         BotCommand(command="gpt", description="Питання до ChatGPT"),
+        BotCommand(command="talk", description="Діалог з відомою особистістю"),
+        BotCommand(command="quiz", description="Квіз"),
     ])
 
 def setup_logging() -> None:

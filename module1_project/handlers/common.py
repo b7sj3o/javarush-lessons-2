@@ -9,8 +9,8 @@ import keyboards.inline as inline_kb
 from utils import image_path, load_message
 
 
-router = Router()
-logger = logging.Logger(__name__)
+router = Router(name="common")
+logger = logging.getLogger(__name__)
 
 
 async def show_main_menu(message: Message, state: FSMContext) -> None:

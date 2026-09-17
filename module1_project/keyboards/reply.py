@@ -5,6 +5,8 @@ BTN_FACT = "🧠 Цікавий факт"
 BTN_TALK = "👤 Відома особистість"
 BTN_QUIZ = "❓ Квіз"
 
+MENU_BUTTONS = {BTN_QUIZ, BTN_TALK, BTN_FACT, BTN_GPT}
+
 
 main_menu_kb = ReplyKeyboardMarkup(
     keyboard=[
